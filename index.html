@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chanlua.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个平平无奇的小男孩">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lua&#39;s Blog">
+<meta property="og:url" content="https://chanlua.github.io/index.html">
+<meta property="og:site_name" content="Lua&#39;s Blog">
+<meta property="og:description" content="一个平平无奇的小男孩">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lua">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://chanlua.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Lua's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lua's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everythine will be fine.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/GoCloud-SSH-Backdoor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/GoCloud-SSH-Backdoor/" class="post-title-link" itemprop="url">高恪再次开启SSH以及升级逻辑、逆向分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-07-21 13:40:54" itemprop="dateCreated datePublished" datetime="2023-07-21T13:40:54+08:00">2023-07-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>继<a href="../GoCloud-SSH">上次添加SSH</a>后，现在有个淘汰的京东云一代，想要发挥余热，于是乎又去下载了一份高恪S2A版本（因为其不包含MT7615N驱动，故无法使用5G WiFi频段），由于我只是想使用其并发多拨的功能，因此关系不大。</p>
+<p>按照前文的流程，卡卡一顿改完后，刷入设备，成功取得ssh，但是升级后就没了，但是官方上没有找到升级包的下载地址，于是乎有了本文的后续分析。</p>
+<p>同时在分析中发现，有疑似后门的程序。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/technology/GoCloud-SSH-Backdoor/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/Lora-train/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/Lora-train/" class="post-title-link" itemprop="url">训练Lora时遇到的问题记事</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-11 01:22:00" itemprop="dateCreated datePublished" datetime="2023-06-11T01:22:00+08:00">2023-06-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="本文包含什么"><a href="#本文包含什么" class="headerlink" title="本文包含什么"></a>本文包含什么</h2><ul>
+<li>以我个人经验为限的一些关于自制LoRA的踩坑经验</li>
+</ul>
+<h2 id="本文不包含什么"><a href="#本文不包含什么" class="headerlink" title="本文不包含什么"></a>本文不包含什么</h2><ul>
+<li>不包含环境的搭建</li>
+<li>不包含手把手的教学</li>
+<li>不包含相关专业名词的解释</li>
+</ul>
+<h2 id="为什么有这篇文章"><a href="#为什么有这篇文章" class="headerlink" title="为什么有这篇文章"></a>为什么有这篇文章</h2><p>因为我多次尝试自制LoRA但是均以失败告终，且我一直找不到失败的原因，自我总结的失败原因包含：</p>
+<ul>
+<li>训练集不理想</li>
+<li>tag不理想</li>
+<li>训练时超参数配置不理想</li>
+</ul>
+<p>我自身并没有过多的机器学习的相关经验，网上我也没有找到详实的，附带训练集的教学资料，能够让我尽可能复现的别人已经成功的操作。</p>
+<p>因此在我的尝试下，出现了这篇文章，我自认为勉强算是训练LoRA成功，同时我也会给出我的训练集。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/technology/Lora-train/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/AOSP-Force-Orientation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/AOSP-Force-Orientation/" class="post-title-link" itemprop="url">Android/AOSP强制应用横屏显示</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-14 10:42:00" itemprop="dateCreated datePublished" datetime="2022-05-14T10:42:00+08:00">2022-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="原因-Why"><a href="#原因-Why" class="headerlink" title="原因&#x2F;Why"></a>原因&#x2F;Why</h1><ul>
+<li>本文代码分析基于Android 9</li>
+<li>Base on Android 9</li>
+</ul>
+<p>近期开始一款机顶盒的开发，测试中发现安装一些应用（通常是只针对手机）的时候，由于应用设置仅支持竖屏，会导致在电视端显示异常。</p>
+<p>Some Application which only support vertical works fine with Android phone,but Android TV</p>
+<p>可通过本文方法使得仅支持竖屏的应用能够在电视端正常显示。</p>
+<p>following the content to let these applications work well.</p>
+<p>通过<a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/android-9.0.0_r42:frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java;l=2423;drc=11768fd80fe62e66df0651b3301315afeb234abb">查看此代码</a>得知，AOSP已经有相关内容支持</p>
+<p><a target="_blank" rel="noopener" href="https://cs.android.com/android/platform/superproject/+/android-9.0.0_r42:frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java;l=2423;drc=11768fd80fe62e66df0651b3301315afeb234abb">The source code</a> shows how to let the application force orientation.</p>
+<p>因此只需要进行如下修改即可<br>Just do this to support force orientcation.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/technology/AOSP-Force-Orientation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/Windows-Dynamic-Port/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/Windows-Dynamic-Port/" class="post-title-link" itemprop="url">Windows动态端口限制导致无法绑定端口</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-12 16:34:14" itemprop="dateCreated datePublished" datetime="2022-05-12T16:34:14+08:00">2022-05-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>启动程序绑定本机端口时提示:<br>When I try to bind a port to localhost, get the message:</p>
+<blockquote>
+<p>An attempt was made to access a socket in a way forbidden by its access permissions</p>
+</blockquote>
+<p>可通过此命令查看允许绑定的端口范围<br>This commandline can be show which port can be bind</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/technology/Windows-Dynamic-Port/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/GoCloud-SSH/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/GoCloud-SSH/" class="post-title-link" itemprop="url">高恪开启SSH</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-09 16:30:14" itemprop="dateCreated datePublished" datetime="2021-12-09T16:30:14+08:00">2021-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>目的：开启高恪软路由SSH功能</li>
+<li>实现方法：将官方镜像文件进行二次打包</li>
+</ul>
+<p>本文着重介绍遇到的问题以及解决、分析的思路和方法，并不是Step by step的教学。文章最后会附一份已经开启ssh的高恪镜像文件。由于目标为非开源项目，过程中一些关于反向工程的内容将不做详述，感兴趣的朋友请自行研究。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/technology/GoCloud-SSH/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/DIY-Power-Bank/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/DIY-Power-Bank/" class="post-title-link" itemprop="url">自制移动/户外电源</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-28T00:00:00+08:00">2021-10-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文介绍了我自己制作户外电源的一些经历。</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ul>
+<li>支持220V 50Hz交流电逆变输出，峰值功率不低于1200W</li>
+<li>支持5v USB直流输出</li>
+<li>支持12v直流输出</li>
+<li>支持12v&#x2F;24v直流输入充电</li>
+<li>总容量不低于1000wh</li>
+<li>尽量支持太阳能充电</li>
+</ul>
+<p>220v市电输出是刚需，根据自身需要选择合适的逆变器即可。之所以选择12v&#x2F;24v作为输入充电电压，是考虑到多数太阳能板的输出电压为12v或24v，因此能够比较方便的扩展日后需求，即使当下不使用，也可以共用充电输入接口。</p>
+<hr>
+<h1 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h1><p>简单介绍一下基本的电路知识，利用下面这两条，就可以开始动手制作电池组。</p>
+<h2 id="串联提升输出电压"><a href="#串联提升输出电压" class="headerlink" title="串联提升输出电压"></a>串联提升输出电压</h2><p>将各个电池首尾相连，即电池负极接另一个电池正极构成的电池组，形成串联电路，最终整个电池组输出电压为整个电池组中各个电池电压相加的总和，而电池组输出电流峰值与单节电池输出电流峰值一致。</p>
+<p>即总输出电压相加，总输出电流不变。</p>
+<h2 id="并联提示输出电流"><a href="#并联提示输出电流" class="headerlink" title="并联提示输出电流"></a>并联提示输出电流</h2><p>将各个电池所有正负极分别相连，即所有正极连在一起，所有负极连在一起，形成并联电路，最终整个电池组输出电压与单节电池电压相同，而输出峰值电流为所有电池总和。</p>
+<p>即总输出电压不变，总输出电流相加</p>
+<hr>
+<h1 id="设备采购"><a href="#设备采购" class="headerlink" title="设备采购"></a>设备采购</h1><h2 id="电芯"><a href="#电芯" class="headerlink" title="电芯"></a>电芯</h2><p>可自由选择电池种类，尽量保证电池内阻一致即可。我这里选择18650三元锂电池，其他朋友请根据使用场景酌情选择三元锂电池，由于其不稳定性，容易导致安全事故。同时磷酸铁锂与三元锂电池的充电电路并不通用，才采买时务必注意，了解其对应的电气参数，如有不明确，多多咨询商家。</p>
+<h2 id="电芯保护模块"><a href="#电芯保护模块" class="headerlink" title="电芯保护模块"></a>电芯保护模块</h2><h2 id="逆变器"><a href="#逆变器" class="headerlink" title="逆变器"></a>逆变器</h2><h2 id="USB输出模块"><a href="#USB输出模块" class="headerlink" title="USB输出模块"></a>USB输出模块</h2><h2 id="充电模块"><a href="#充电模块" class="headerlink" title="充电模块"></a>充电模块</h2><p>未完待续…</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/laws/Traffic-Accident-Death-Damages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/laws/Traffic-Accident-Death-Damages/" class="post-title-link" itemprop="url">常见交通事故损害赔偿计算方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-27 16:54:00" itemprop="dateCreated datePublished" datetime="2021-10-27T16:54:00+08:00">2021-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文仅列举国家法律、最高人民法院司法解释以及部委级行政机关颁布的行政法规、指导意见等，在实际处理时，还需要参考事故发生地的地方性法规、规章、性质文件等。</p>
+<p>本文所有内容仅供参考，包含部分个人生活经验，不具有法律指导意义，请咨询专业人士。为清晰易懂，本文表述尽量不使用法律用语，可自行翻看参考资料中原文查看出处。</p>
+<hr>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgxODE3OTlkZWY5ODAxNzliMDkwMzJmZjE3YTk=">最高人民法院关于审理道路交通事故损害赔偿案件适用法律若干问题的解释</a></li>
+<li><a target="_blank" rel="noopener" href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgxODE3OTlkZjYxNDAxNzliMDlhODgyMzJiNTM=">最高人民法院关于审理人身损害赔偿案件适用法律若干问题的解释</a></li>
+<li><a target="_blank" rel="noopener" href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgxODE3YWIyMzFlYjAxN2FiZDYxN2VmNzA1MTk=">中华人民共和国道路交通安全法</a></li>
+<li><a target="_blank" rel="noopener" href="https://flk.npc.gov.cn/detail2.html?ZmY4MDgwODE2ZjNjYmIzYzAxNmY0MGY1NjZjMTBlMjM=">中华人民共和国道路交通安全法实施条例</a></li>
+</ul>
+<hr>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/laws/Traffic-Accident-Death-Damages/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/H96-Max-Pro-Android-11-Firmware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/H96-Max-Pro-Android-11-Firmware/" class="post-title-link" itemprop="url">H96 Max Pro Android 11 固件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-20 00:34:14" itemprop="dateCreated datePublished" datetime="2021-10-20T00:34:14+08:00">2021-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在以下设备中测试通过:<br>Test with:</p>
+<ul>
+<li>Soc: RK3318</li>
+<li>RAM: 4GB</li>
+<li>eMMC: 32GB</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/19ovvAOeGyzbuThO43ShKZA">固件下载&#x2F;Firmware Download</a></p>
+<p>提取码&#x2F;Password: <code>nidx</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/travel/China-FuJian-XiaMem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/travel/China-FuJian-XiaMem/" class="post-title-link" itemprop="url">厦门随拍</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-21T00:00:00+08:00">2019-10-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/1.jpg" alt="双子塔"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">双子塔 ƒ&#x2F;2.4 1&#x2F;60 5.2 mm ISO481</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/2.jpg" alt="胡里山炮台"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">胡里山炮台 ƒ&#x2F;1.8 1&#x2F;3533 4.216 mm ISO100</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/3.jpg" alt="滨海浴场"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">滨海浴场 ƒ&#x2F;1.8 1&#x2F;1396 4.216 mm ISO100</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/4.jpg" alt="滨海浴场"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">滨海浴场 ƒ&#x2F;2.4 1&#x2F;1159 5.2 mm ISO100</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/8.jpg" alt="滨海浴场"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">滨海浴场 ƒ&#x2F;2.4 1&#x2F;1972 5.2 mm ISO100</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/5.jpg" alt="谷吧"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">谷吧 ƒ&#x2F;1.8 1&#x2F;33 4.216 mm ISO609</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/6.jpg" alt="无名"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">某个海滩 ƒ&#x2F;2.4 1&#x2F;4859 5.2 mm ISO100</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="/images/CN_FJ_XM/7.jpg" alt="鼓浪屿某商家"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">鼓浪屿某商家 ƒ&#x2F;1.8 1&#x2F;385 4.216 mm ISO100</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/Block-activation-lock-for-jailbroken-iOS-devices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/technology/Block-activation-lock-for-jailbroken-iOS-devices/" class="post-title-link" itemprop="url">阻止越狱iOS设备的激活锁</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-01-19 00:34:14" itemprop="dateCreated datePublished" datetime="2015-01-19T00:34:14+08:00">2015-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>已经越狱的设备，如果存在激活锁，即已登录AppleID，且<strong>开启查找我的iPhone</strong>功能，可以通过以下命令行绕过激活锁。</p>
+<p>Devices that have been jailbroken and have an activation lock, i.e., are logged into AppleID and <strong>Find My iPhone</strong> turned on, can bypass the activation lock with the following command line.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> /Applications/Setup.app /Applications/Setup.app.bak</span><br><span class="line">uicache --all</span><br><span class="line">killall backboardd</span><br></pre></td></tr></table></figure>
+
+<p>执行完毕这三条命令后，设备会重新进入白苹果界面，随后正常进入系统。</p>
+<p>此方法仅仅是阻止设备激活锁的运行，并非取消激活锁或登出对应的AppleID，当设备升级iOS或刷机时，会重新出现激活锁，因此请务必慎重升级与刷机。</p>
+<p>This method only prevents the device activation lock from running, not cancels the activation lock or logs out the corresponding AppleID. When the device is upgraded to iOS or flashed, the activation lock will reappear, so please make sure to upgrade and flash carefully.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lua</p>
+  <div class="site-description" itemprop="description">一个平平无奇的小男孩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lua</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

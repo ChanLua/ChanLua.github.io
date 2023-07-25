@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chanlua.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文包含什么 以我个人经验为限的一些关于自制LoRA的踩坑经验  本文不包含什么 不包含环境的搭建 不包含手把手的教学 不包含相关专业名词的解释  为什么有这篇文章因为我多次尝试自制LoRA但是均以失败告终，且我一直找不到失败的原因，自我总结的失败原因包含：  训练集不理想 tag不理想 训练时超参数配置不理想  我自身并没有过多的机器学习的相关经验，网上我也没有找到详实的，附带训练集的教学资料，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="训练Lora时遇到的问题记事">
+<meta property="og:url" content="https://chanlua.github.io/technology/Lora-train/index.html">
+<meta property="og:site_name" content="Lua&#39;s Blog">
+<meta property="og:description" content="本文包含什么 以我个人经验为限的一些关于自制LoRA的踩坑经验  本文不包含什么 不包含环境的搭建 不包含手把手的教学 不包含相关专业名词的解释  为什么有这篇文章因为我多次尝试自制LoRA但是均以失败告终，且我一直找不到失败的原因，自我总结的失败原因包含：  训练集不理想 tag不理想 训练时超参数配置不理想  我自身并没有过多的机器学习的相关经验，网上我也没有找到详实的，附带训练集的教学资料，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chanlua.github.io/images/Lora-train/xyz_grid-0000-3606640756.png">
+<meta property="og:image" content="https://chanlua.github.io/images/Lora-train/grid-random.png">
+<meta property="og:image" content="https://chanlua.github.io/images/Lora-train/grid-black-hair.png">
+<meta property="og:image" content="https://chanlua.github.io/images/Lora-train/grid-green-hair-smail.png">
+<meta property="article:published_time" content="2023-06-10T17:22:00.000Z">
+<meta property="article:modified_time" content="2023-07-25T04:33:17.540Z">
+<meta property="article:author" content="Lua">
+<meta property="article:tag" content="DeepLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chanlua.github.io/images/Lora-train/xyz_grid-0000-3606640756.png">
+
+<link rel="canonical" href="https://chanlua.github.io/technology/Lora-train/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>训练Lora时遇到的问题记事 | Lua's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lua's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Everythine will be fine.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://chanlua.github.io/technology/Lora-train/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lua">
+      <meta itemprop="description" content="一个平平无奇的小男孩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lua's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          训练Lora时遇到的问题记事
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-11 01:22:00" itemprop="dateCreated datePublished" datetime="2023-06-11T01:22:00+08:00">2023-06-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-25 12:33:17" itemprop="dateModified" datetime="2023-07-25T12:33:17+08:00">2023-07-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="本文包含什么"><a href="#本文包含什么" class="headerlink" title="本文包含什么"></a>本文包含什么</h2><ul>
+<li>以我个人经验为限的一些关于自制LoRA的踩坑经验</li>
+</ul>
+<h2 id="本文不包含什么"><a href="#本文不包含什么" class="headerlink" title="本文不包含什么"></a>本文不包含什么</h2><ul>
+<li>不包含环境的搭建</li>
+<li>不包含手把手的教学</li>
+<li>不包含相关专业名词的解释</li>
+</ul>
+<h2 id="为什么有这篇文章"><a href="#为什么有这篇文章" class="headerlink" title="为什么有这篇文章"></a>为什么有这篇文章</h2><p>因为我多次尝试自制LoRA但是均以失败告终，且我一直找不到失败的原因，自我总结的失败原因包含：</p>
+<ul>
+<li>训练集不理想</li>
+<li>tag不理想</li>
+<li>训练时超参数配置不理想</li>
+</ul>
+<p>我自身并没有过多的机器学习的相关经验，网上我也没有找到详实的，附带训练集的教学资料，能够让我尽可能复现的别人已经成功的操作。</p>
+<p>因此在我的尝试下，出现了这篇文章，我自认为勉强算是训练LoRA成功，同时我也会给出我的训练集。</p>
+<span id="more"></span>
+
+<h2 id="关于训练集"><a href="#关于训练集" class="headerlink" title="关于训练集"></a>关于训练集</h2><p>这部分尽量选择清晰的图片，且尽量只包含你想要训练的部分。</p>
+<p>例如想训练某个服装或某种穿衣风格，则图片中尽量只包含服装的部分，且背景尽量与服装主题能够区分，尽量不包含人脸等其他可能的干扰因素。</p>
+<p>如果想训练某个长相风格的人脸，则图片中尽量只包含人像部分，而不要选择全身照、夜景照等干扰因素过多的图片。</p>
+<p>我这次选择了训练一种特定的服饰风格，因此在微博上搜索了40张cosplay芭芭拉的照片，并进行设当裁剪后，交由deepbooru自动打标。</p>
+<p>这里在进行裁剪时，由于我没经验，导致在后期使用时出现的一个坑，就是微博照片都会自带水印，而我裁剪后相当一部分图片保留了水印，因此这一部分被遗传到了LoRA中，导致在最终出图时，可能也会出现类似水印的特征。</p>
+<h2 id="关于训练"><a href="#关于训练" class="headerlink" title="关于训练"></a>关于训练</h2><p>我使用了kohya_ss。这里我又踩了一个坑，出于习惯，一开始我是在Docker中运行（Windows宿主），但是一下子没想起来Windows Docker是通过虚拟机实现的，docker中的GPU通过wslg转发一层，导致GPU性能锐减的非常厉害，也就是说我浪费了很多时间等训练结果。:( sad</p>
+<p>参数绝大多数与网上其他的基础教学一致（具体我使用的参数，在训练集下载中一并提供了），稍有不同的是，依据我之前的失败经验（我归结于过拟合）和浅显的tensorflow使用经验，我设置了一些避免过拟合的参数，比如：</p>
+<ul>
+<li>Dropout caption every n epochs</li>
+<li>Rate of caption dropout</li>
+<li>Network dropout</li>
+<li>Rank dropout</li>
+<li>Module dropout</li>
+</ul>
+<p>事实证明，我之前的失败确实过拟合了，但是这些参数也并没有挽救回来过拟合的的结果。（原因后说）</p>
+<p>这里为了更好的控制训练中的状态，我将训练集的文件名命名为1_barbara，epoch为150，并且每10次保存一次。</p>
+<p>这里的150也是参考了网上现有的一些教程，通常说需要至少每个图片让机器学习150次。</p>
+<p>从我最后的试错经验来看，150并没有很明显的依据，这应该是出自经验的一个数字，但由于训练集的原因，并没有很高的普适性。</p>
+<p>前期我过度迷信这个至少150次，导致训练结果实际上已经过拟，但是我却以为是欠拟合。因此还在继续调高训练次数。而我当时作出欠拟合的判断，来自于我浅显的tensorflow开发经验，由于损失函数反复振荡，我尝试调低学习率依旧振荡，没有收敛迹象。由于第一轮迭代时，损失函数只大约就在0.1<del>0.15之间，反复的振荡区间大概在0.05</del>0.15之间。</p>
+<p>这里我犯了几个错误，一是LoRA本身就是微调模型，因此基础模型本身的准确率就已经足够高，所以单纯用损失函数判断是不准确的（或者说损失函数的粒度需要看的更细，比如到百分位、千分位），这与我之前用tensorflow做验证码识别是完全不一样的，不会出现一个从0.9到0.1这么大跨度的收敛过程。二是因为用的别人开发好的套件，因此在训练过程中没有校验集的参与，过拟现象非常容易产生。</p>
+<h2 id="关于校验"><a href="#关于校验" class="headerlink" title="关于校验"></a>关于校验</h2><p>所谓校验，其实就是拿着训练出来的LoRA，出图看看效果，是不是符合自己的预期。我使用了以下参数出图，同时使用<code>X/Y/Z plot</code>横向对比一下不同迭代次数的LoRA效果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Best quality,masterpiece,ultra high res,</span><br><span class="line">1girl, (cos_barbara_v2:1),</span><br><span class="line"></span><br><span class="line">Negative prompt: (nsfw:2), (wind:1.4), (bangs:2), (worst quality:2), (low quality:2), (normal quality:2), (side view:1.5), (from behind), hands, lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, (bad anatomy:2)</span><br><span class="line">Steps: 20, Sampler: Euler a, CFG scale: 5, Seed: 3606640756, Size: 512x768, Model hash: fc2511737a, Model: chilloutmix_NiPrunedFp32Fix, AddNet Enabled: True, AddNet Module 1: LoRA, AddNet Model 1: barbara_v2-000010(7f204f601fb7), AddNet Weight A 1: 0.75, AddNet Weight B 1: 0.75, Script: X/Y/Z plot, X Type: AddNet Model 1, X Values: &quot;barbara_v2-000010(7f204f601fb7),barbara_v2-000020(e3a0b2ec4351),barbara_v2-000030(17d39e7817fb),barbara_v2-000040(e03691a03d69),barbara_v2-000050(9023fb79b336),barbara_v2-000060(be8b51ff0c7a),barbara_v2-000070(18b8025ba929),barbara_v2-000080(8fc0ff282c57),barbara_v2-000090(605e18578d44),barbara_v2-000100(83af2b9646c2),barbara_v2-000110(89d7812466f6),barbara_v2-000120(42f258cd7b4d),barbara_v2-000130(80787aa22eb2),barbara_v2-000140(deaaeede1671),barbara_v2(ffe4a1d865d8)&quot;, Version: v1.3.2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Lora-train/xyz_grid-0000-3606640756.png" alt="xyz_plot"></p>
+<p>从结果中可以发现，其实迭代10次，就基本已经有我需要的目标风格服饰了，40次时就已经有过拟合的迹象了（面部扭曲，场景与训练素材高度雷同）后面更多次数的迭代甚至出现了和训练图一模一样的动作。</p>
+<p>最终我就选择了迭代10次的模型，并进行多次快乐抽卡：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Best quality,masterpiece,ultra high res,</span><br><span class="line">1girl, (cos_barbara_v2:1),</span><br><span class="line"></span><br><span class="line">Negative prompt: (nsfw:2), (wind:1.4), (bangs:2), (worst quality:2), (low quality:2), (normal quality:2), (side view:1.5), (from behind), hands, lowres, normal quality, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, (bad anatomy:2)</span><br><span class="line">Steps: 20, Sampler: Euler a, CFG scale: 5, Seed: 3318734022, Size: 512x768, Model hash: fc2511737a, Model: chilloutmix_NiPrunedFp32Fix, Clip skip: 2, ENSD: 31337, AddNet Enabled: True, AddNet Module 1: LoRA, AddNet Model 1: barbara_v2-000010(7f204f601fb7), AddNet Weight A 1: 0.75, AddNet Weight B 1: 0.8, Version: v1.3.2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Lora-train/grid-random.png" alt="grid"></p>
+<p>从结果来看，服装风格基本已经都有我训练的要素了，虽然并不是都很像，但是这里其实就是取舍问题了，需要更强的相似性就可以尝试性选择迭代次数更多模型，或者选择更高的权重。</p>
+<p>但从图中看，我觉得权重还可以调低，因为好几个图的姿势与训练集高度雷同，也就是动作被训练出来了，但是着装风格的权重不够。要解决这个问题，可能需要在训练过程中加入正则化，而这又是另一个话题了。</p>
+<p>同时为了验证模型的泛化能力如何，我尝试指定一些图中的细节，在正向提示词中加入black hair，尝试要求绘制黑头发的人，正向提示词为：（其他不变）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Best quality,masterpiece,ultra high res,</span><br><span class="line">1girl, (cos_barbara_v2:1), </span><br><span class="line">black hair,</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Lora-train/grid-black-hair.png" alt="black hair"></p>
+<p>看起来效果还行。再试试指定要求绿头发(green hair)，并且来个悲伤的表情(sad)</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Best quality,masterpiece,ultra high res,</span><br><span class="line">1girl, (cos_barbara_v2:1), </span><br><span class="line">green hair,</span><br><span class="line">smail</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Lora-train/grid-green-hair-smail.png" alt="green hair  &amp; smail"></p>
+<p>看起来似乎还不错，那测试就到这里吧，勉勉强强能打个60分及格。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>不要过于迷信教程上给的各种参数数值，调高调低多试一试</li>
+<li>不要过分信任损失函数，更多的要以出图效果为准</li>
+<li>迭代次数不要过多，初期尽量以较少的迭代次数，并辅以x&#x2F;y&#x2F;z plot快速验证一下拟合情况</li>
+</ul>
+<p>以上，是我自己的一些踩坑经历和经验总结。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DeepLearning/" rel="tag"># DeepLearning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/technology/AOSP-Force-Orientation/" rel="prev" title="Android/AOSP强制应用横屏显示">
+      <i class="fa fa-chevron-left"></i> Android/AOSP强制应用横屏显示
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/technology/GoCloud-SSH-Backdoor/" rel="next" title="高恪再次开启SSH以及升级逻辑、逆向分析">
+      高恪再次开启SSH以及升级逻辑、逆向分析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%8C%85%E5%90%AB%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">本文包含什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E4%B8%8D%E5%8C%85%E5%90%AB%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">本文不包含什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-number">3.</span> <span class="nav-text">为什么有这篇文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%AE%AD%E7%BB%83%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">关于训练集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%AE%AD%E7%BB%83"><span class="nav-number">5.</span> <span class="nav-text">关于训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%A0%A1%E9%AA%8C"><span class="nav-number">6.</span> <span class="nav-text">关于校验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lua</p>
+  <div class="site-description" itemprop="description">一个平平无奇的小男孩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lua</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
